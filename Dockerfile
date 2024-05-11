@@ -28,6 +28,7 @@ RUN set -x; echo "Starting image build for Debian Bookworm" \
         crossbuild-essential-armhf                     \
         crossbuild-essential-mipsel                    \
         crossbuild-essential-ppc64el                   \
+        crossbuild-essential-i386                      \
         curl                                           \
         devscripts                                     \
         gdb                                            \
@@ -53,6 +54,7 @@ RUN set -x; echo "Starting image build for Debian Bookworm" \
         libc6-dev-armhf-cross                          \
         libc6-dev-mipsel-cross                         \
         libc6-dev-ppc64el-cross                        \
+        libc6-dev-i386-cross                           \
  && apt-get clean
 # FIXME: install gcc-multilib
 # FIXME: add mips and powerpc architectures
@@ -100,7 +102,7 @@ RUN mkdir -p "/tmp/osxcross"                                                    
 
 
 # Create symlinks for triples and set default CROSS_TRIPLE
-ENV LINUX_TRIPLES=arm-linux-gnueabi,arm-linux-gnueabihf,aarch64-linux-gnu,mipsel-linux-gnu,powerpc64le-linux-gnu                  \
+ENV LINUX_TRIPLES=arm-linux-gnueabi,arm-linux-gnueabihf,aarch64-linux-gnu,mipsel-linux-gnu,powerpc64le-linux-gnu,i686-linux-gnu   \
     DARWIN_TRIPLES=x86_64h-apple-darwin${DARWIN_VERSION},x86_64-apple-darwin${DARWIN_VERSION},i386-apple-darwin${DARWIN_VERSION}  \
     WINDOWS_TRIPLES=i686-w64-mingw32,x86_64-w64-mingw32                                                                           \
     CROSS_TRIPLE=x86_64-linux-gnu
