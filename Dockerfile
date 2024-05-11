@@ -1,8 +1,8 @@
-FROM buildpack-deps:stretch-curl
+FROM buildpack-deps:bookworm-curl
 MAINTAINER Manfred Touron <m@42.am> (https://github.com/moul)
 
 # Install deps
-RUN set -x; echo "Starting image build for Debian Stretch" \
+RUN set -x; echo "Starting image build for Debian Bookworm" \
  && dpkg --add-architecture arm64                      \
  && dpkg --add-architecture armel                      \
  && dpkg --add-architecture armhf                      \
@@ -47,6 +47,12 @@ RUN set -x; echo "Starting image build for Debian Stretch" \
         lzma-dev                                       \
         openssl                                        \
         libssl-dev                                     \
+        pkg-config                                     \
+        libc6-dev-arm64-cross                          \
+        libc6-dev-armel-cross                          \
+        libc6-dev-armhf-cross                          \
+        libc6-dev-mipsel-cross                         \
+        libc6-dev-ppc64el-cross                        \
  && apt-get clean
 # FIXME: install gcc-multilib
 # FIXME: add mips and powerpc architectures
